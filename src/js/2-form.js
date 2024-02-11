@@ -2,8 +2,8 @@
 
 const STORAGE_KEY = 'feedback-form-state';
 const form = document.querySelector('.feedback-form');
-const input = document.querySelector('input');
-const textarea = document.querySelector('textarea');
+const input = document.querySelector('input[name="email"]');
+const textarea = document.querySelector('textarea[name="message"]');
 form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input', onTextField);
 
@@ -11,7 +11,7 @@ function onFormSubmit(event) {
   event.preventDefault();
   if (input.value !== '' && textarea.value !== '') {
     localStorage.removeItem(STORAGE_KEY);
-    console.log({ email: input.value, message: textarea.value });
+    console.log({ email: input.value.trim(), message: textarea.value.trim() });
     event.currentTarget.reset();
   }
 }
